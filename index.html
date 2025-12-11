@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Admission Application</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background-color: #f8f9fc;
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      .header {
+        background: white;
+        border-bottom: 1px solid #e6eaf0;
+        padding: 24px 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-content {
+        text-align: center;
+        margin-bottom: 24px;
+      }
+
+      .header h1 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #111318;
+        margin-bottom: 8px;
+      }
+
+      .header p {
+        color: #667085;
+        font-size: 1rem;
+      }
+
+      /* Progress Bar */
+      .progress-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .progress-step {
+        display: flex;
+        align-items: center;
+        flex: 1;
+      }
+
+      .step-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 14px;
+        border: 2px solid #e6eaf0;
+        background: white;
+        color: #667085;
+        transition: all 0.3s ease;
+      }
+
+      .step-circle.active {
+        background: #0066ff;
+        border-color: #0066ff;
+        color: white;
+      }
+
+      .step-circle.completed {
+        background: #17a768;
+        border-color: #17a768;
+        color: white;
+      }
+
+      .step-title {
+        margin-left: 12px;
+        font-weight: 500;
+        font-size: 14px;
+        color: #667085;
+      }
+
+      .step-title.active,
+      .step-title.completed {
+        color: #111318;
+      }
+
+      .progress-line {
+        flex: 1;
+        height: 2px;
+        background: #e6eaf0;
+        margin: 0 16px;
+        transition: background-color 0.3s ease;
+      }
+
+      .progress-line.completed {
+        background: #17a768;
+      }
+
+      .mobile-step-title {
+        text-align: center;
+        margin-top: 16px;
+        display: none;
+      }
+
+      .mobile-step-title h2 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #111318;
+      }
+
+      /* Form Content */
+      .form-container {
+        max-width: 600px;
+        margin: 32px auto;
+        padding: 0 24px;
+      }
+
+      .form-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e6eaf0;
+        padding: 32px;
+      }
+
+      .form-step {
+        display: none;
+      }
+
+      .form-step.active {
+        display: block;
+      }
+
+      .step-header {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #111318;
+        margin-bottom: 24px;
+      }
+
+      /* Form Elements */
+      .form-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .form-grid.two-col {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .form-grid.three-col {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #111318;
+        margin-bottom: 8px;
+      }
+
+      .required {
+        color: #dc2626;
+      }
+
+      .form-input,
+      .form-select {
+        padding: 12px 16px;
+        border: 1px solid #e6eaf0;
+        border-radius: 6px;
+        font-size: 14px;
+        background: white;
+        color: #111318;
+        transition: all 0.2s ease;
+      }
+
+      .form-input:focus,
+      .form-select:focus {
+        outline: none;
+        border-color: #0066ff;
+        box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+      }
+
+      .form-input.error,
+      .form-select.error {
+        border-color: #dc2626;
+      }
+
+      .form-input::placeholder {
+        color: #667085;
+      }
+
+      .error-message {
+        color: #dc2626;
+        font-size: 12px;
+        margin-top: 4px;
+      }
+
+      /* Review Section */
+      .review-section {
+        border: 1px solid #e6eaf0;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 16px;
+      }
+
+      .review-header {
+        display: flex;
+        justify-content: between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+
+      .review-title {
+        font-weight: 600;
+        color: #111318;
+        margin-bottom: 12px;
+      }
+
+      .edit-button {
+        background: none;
+        border: none;
+        color: #0066ff;
+        cursor: pointer;
+        font-size: 14px;
+        text-decoration: underline;
+        float: right;
+      }
+
+      .review-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        font-size: 14px;
+      }
+
+      .review-item {
+        color: #111318;
+      }
+
+      .review-label {
+        color: #667085;
+        font-weight: 500;
+      }
+
+      .terms {
+        border-top: 1px solid #e6eaf0;
+        padding-top: 24px;
+        margin-top: 24px;
+      }
+
+      .terms p {
+        font-size: 14px;
+        color: #667085;
+        margin-bottom: 16px;
+      }
+
+      /* Navigation */
+      .navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 32px;
+        border-top: 1px solid #e6eaf0;
+        margin-top: 32px;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: none;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background: #0066ff;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #0052cc;
+      }
+
+      .btn-success {
+        background: #17a768;
+        color: white;
+        padding: 12px 32px;
+      }
+
+      .btn-success:hover {
+        background: #138a56;
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: #111318;
+        border: 1px solid #e6eaf0;
+      }
+
+      .btn-secondary:hover {
+        background: #f8f9fc;
+      }
+
+      .btn-secondary:disabled {
+        color: #667085;
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
+      .btn-ghost {
+        background: transparent;
+        color: #667085;
+        border: none;
+        padding: 12px 24px;
+      }
+
+      .btn-ghost:hover {
+        color: #111318;
+      }
+
+      /* Icons */
+      .icon {
+        width: 16px;
+        height: 16px;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .step-title {
+          display: none;
+        }
+
+        .mobile-step-title {
+          display: block;
+        }
+
+        .form-grid.two-col,
+        .form-grid.three-col {
+          grid-template-columns: 1fr;
+        }
+
+        .review-grid {
+          grid-template-columns: 1fr;
+          gap: 4px;
+        }
+
+        .navigation {
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .form-card {
+          padding: 24px 16px;
+        }
+      }
+
+      /* Success Message */
+      .success-message {
+        text-align: center;
+        padding: 48px 32px;
+      }
+
+      .success-icon {
+        width: 64px;
+        height: 64px;
+        background: #17a768;
+        border-radius: 50%;
+        margin: 0 auto 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .success-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #111318;
+        margin-bottom: 8px;
+      }
+
+      .success-subtitle {
+        color: #667085;
+        margin-bottom: 16px;
+      }
+
+      .reference-number {
+        background: #f8f9fc;
+        padding: 12px;
+        border-radius: 6px;
+        font-family: monospace;
+        font-weight: 600;
+        color: #111318;
+      }
+    </style> -->
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="container">
+        <div class="header-content">
+          <h1>Student Admission Application</h1>
+          <p>Please complete all sections to submit your application</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+          <div class="progress-step">
+            <div class="step-circle active" id="step-circle-1">1</div>
+            <div class="step-title active">Personal Details</div>
+          </div>
+          <div class="progress-line" id="progress-line-1"></div>
+
+          <div class="progress-step">
+            <div class="step-circle" id="step-circle-2">2</div>
+            <div class="step-title">Academic History</div>
+          </div>
+          <div class="progress-line" id="progress-line-2"></div>
+
+          <div class="progress-step">
+            <div class="step-circle" id="step-circle-3">3</div>
+            <div class="step-title">Guardian Information</div>
+          </div>
+          <div class="progress-line" id="progress-line-3"></div>
+
+          <div class="progress-step">
+            <div class="step-circle" id="step-circle-4">4</div>
+            <div class="step-title">Review & Submit</div>
+          </div>
+        </div>
+
+        <!-- Mobile Step Title -->
+        <div class="mobile-step-title">
+          <h2 id="mobile-step-text">Step 1: Personal Details</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Content -->
+    <div class="form-container">
+      <div class="form-card">
+        <form id="admission-form">
+          <!-- Step 1: Personal Details -->
+          <div class="form-step active" id="step-1">
+            <div class="step-header">Personal Information</div>
+
+            <div class="form-grid two-col">
+              <div class="form-group">
+                <label class="form-label"
+                  >First Name <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-input"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="Enter your first name"
+                />
+                <div class="error-message" id="firstName-error"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >Last Name <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-input"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Enter your last name"
+                />
+                <div class="error-message" id="lastName-error"></div>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label"
+                  >Email Address <span class="required">*</span></label
+                >
+                <input
+                  type="email"
+                  class="form-input"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email address"
+                />
+                <div class="error-message" id="email-error"></div>
+              </div>
+            </div>
+
+            <div class="form-grid two-col">
+              <div class="form-group">
+                <label class="form-label"
+                  >Phone Number <span class="required">*</span></label
+                >
+                <input
+                  type="tel"
+                  class="form-input"
+                  id="phone"
+                  name="phone"
+                  placeholder="(555) 123-4567"
+                />
+                <div class="error-message" id="phone-error"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >Date of Birth <span class="required">*</span></label
+                >
+                <input
+                  type="date"
+                  class="form-input"
+                  id="dateOfBirth"
+                  name="dateOfBirth"
+                />
+                <div class="error-message" id="dateOfBirth-error"></div>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label"
+                  >Gender <span class="required">*</span></label
+                >
+                <select class="form-select" id="gender" name="gender">
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                  <option value="prefer-not-to-say">Prefer not to say</option>
+                </select>
+                <div class="error-message" id="gender-error"></div>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label"
+                  >Address <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-input"
+                  id="address"
+                  name="address"
+                  placeholder="Enter your full address"
+                />
+                <div class="error-message" id="address-error"></div>
+              </div>
+            </div>
+
+            <div class="form-grid three-col">
+              <div class="form-group">
+                <label class="form-label"
+                  >City <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-input"
+                  id="city"
+                  name="city"
+                  placeholder="City"
+                />
+                <div class="error-message" id="city-error"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >State <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-input"
+                  id="state"
+                  name="state"
+                  placeholder="State"
+                />
+                <div class="error-message" id="state-error"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >ZIP Code <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-input"
+                  id="zipCode"
+                  name="zipCode"
+                  placeholder="ZIP"
+                />
+                <div class="error-message" id="zipCode-error"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Academic History -->
+          <div class="form-step" id="step-2">
+            <div class="step-header">Academic Information</div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label"
+                  >High School Name <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-input"
+                  id="highSchoolName"
+                  name="highSchoolName"
+                  placeholder="Enter your high school name"
+                />
+                <div class="error-message" id="highSchoolName-error"></div>
+              </div>
+            </div>
+
+            <div class="form-grid two-col">
+              <div class="form-group">
+                <label class="form-label"
+                  >Graduation Year <span class="required">*</span></label
+                >
+                <select
+                  class="form-select"
+                  id="graduationYear"
+                  name="graduationYear"
+                >
+                  <option value="">Select Year</option>
+                </select>
+                <div class="error-message" id="graduationYear-error"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >GPA <span class="required">*</span></label
+                >
+                <input
+                  type="number"
+                  step="0.01"
+                  min="0"
+                  max="4"
+                  class="form-input"
+                  id="gpa"
+                  name="gpa"
+                  placeholder="3.75"
+                />
+                <div class="error-message" id="gpa-error"></div>
+              </div>
+            </div>
+
+            <div class="form-grid two-col">
+              <div class="form-group">
+                <label class="form-label">SAT Score</label>
+                <input
+                  type="number"
+                  min="400"
+                  max="1600"
+                  class="form-input"
+                  id="satScore"
+                  name="satScore"
+                  placeholder="1450"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">ACT Score</label>
+                <input
+                  type="number"
+                  min="1"
+                  max="36"
+                  class="form-input"
+                  id="actScore"
+                  name="actScore"
+                  placeholder="32"
+                />
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label"
+                  >Previous College/University (if any)</label
+                >
+                <input
+                  type="text"
+                  class="form-input"
+                  id="previousCollege"
+                  name="previousCollege"
+                  placeholder="Enter previous institution name"
+                />
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label"
+                  >Intended Major <span class="required">*</span></label
+                >
+                <select
+                  class="form-select"
+                  id="intendedMajor"
+                  name="intendedMajor"
+                >
+                  <option value="">Select Major</option>
+                  <option value="computer-science">Computer Science</option>
+                  <option value="business">Business Administration</option>
+                  <option value="engineering">Engineering</option>
+                  <option value="psychology">Psychology</option>
+                  <option value="biology">Biology</option>
+                  <option value="mathematics">Mathematics</option>
+                  <option value="english">English</option>
+                  <option value="history">History</option>
+                  <option value="economics">Economics</option>
+                  <option value="art">Art & Design</option>
+                  <option value="other">Other</option>
+                </select>
+                <div class="error-message" id="intendedMajor-error"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Guardian Information -->
+          <div class="form-step" id="step-3">
+            <div class="step-header">
+              Guardian & Emergency Contact Information
+            </div>
+
+            <div class="form-grid two-col">
+              <div class="form-group">
+                <label class="form-label"
+                  >Guardian First Name <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-input"
+                  id="guardianFirstName"
+                  name="guardianFirstName"
+                  placeholder="Guardian's first name"
+                />
+                <div class="error-message" id="guardianFirstName-error"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >Guardian Last Name <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-input"
+                  id="guardianLastName"
+                  name="guardianLastName"
+                  placeholder="Guardian's last name"
+                />
+                <div class="error-message" id="guardianLastName-error"></div>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label"
+                  >Relationship to Student
+                  <span class="required">*</span></label
+                >
+                <select
+                  class="form-select"
+                  id="relationship"
+                  name="relationship"
+                >
+                  <option value="">Select Relationship</option>
+                  <option value="parent">Parent</option>
+                  <option value="guardian">Legal Guardian</option>
+                  <option value="grandparent">Grandparent</option>
+                  <option value="aunt-uncle">Aunt/Uncle</option>
+                  <option value="sibling">Sibling</option>
+                  <option value="other">Other</option>
+                </select>
+                <div class="error-message" id="relationship-error"></div>
+              </div>
+            </div>
+
+            <div class="form-grid two-col">
+              <div class="form-group">
+                <label class="form-label"
+                  >Guardian Phone <span class="required">*</span></label
+                >
+                <input
+                  type="tel"
+                  class="form-input"
+                  id="guardianPhone"
+                  name="guardianPhone"
+                  placeholder="(555) 123-4567"
+                />
+                <div class="error-message" id="guardianPhone-error"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >Guardian Email <span class="required">*</span></label
+                >
+                <input
+                  type="email"
+                  class="form-input"
+                  id="guardianEmail"
+                  name="guardianEmail"
+                  placeholder="guardian@email.com"
+                />
+                <div class="error-message" id="guardianEmail-error"></div>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Guardian Address</label>
+                <input
+                  type="text"
+                  class="form-input"
+                  id="guardianAddress"
+                  name="guardianAddress"
+                  placeholder="Guardian's address (if different)"
+                />
+              </div>
+            </div>
+
+            <div class="form-grid two-col">
+              <div class="form-group">
+                <label class="form-label"
+                  >Emergency Contact Name <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-input"
+                  id="emergencyContact"
+                  name="emergencyContact"
+                  placeholder="Emergency contact full name"
+                />
+                <div class="error-message" id="emergencyContact-error"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label"
+                  >Emergency Contact Phone
+                  <span class="required">*</span></label
+                >
+                <input
+                  type="tel"
+                  class="form-input"
+                  id="emergencyPhone"
+                  name="emergencyPhone"
+                  placeholder="(555) 123-4567"
+                />
+                <div class="error-message" id="emergencyPhone-error"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Review & Submit -->
+          <div class="form-step" id="step-4">
+            <div class="step-header">Review Your Application</div>
+
+            <!-- Personal Details Summary -->
+            <div class="review-section">
+              <div class="review-title">
+                Personal Details
+                <button type="button" class="edit-button" onclick="goToStep(1)">
+                  Edit
+                </button>
+              </div>
+              <div class="review-grid" id="personal-review"></div>
+            </div>
+
+            <!-- Academic Details Summary -->
+            <div class="review-section">
+              <div class="review-title">
+                Academic Information
+                <button type="button" class="edit-button" onclick="goToStep(2)">
+                  Edit
+                </button>
+              </div>
+              <div class="review-grid" id="academic-review"></div>
+            </div>
+
+            <!-- Guardian Details Summary -->
+            <div class="review-section">
+              <div class="review-title">
+                Guardian & Emergency Contact
+                <button type="button" class="edit-button" onclick="goToStep(3)">
+                  Edit
+                </button>
+              </div>
+              <div class="review-grid" id="guardian-review"></div>
+            </div>
+
+            <!-- Terms -->
+            <div class="terms">
+              <p>
+                By submitting this application, I confirm that all information
+                provided is accurate and complete. I understand that any false
+                information may result in the rejection of my application.
+              </p>
+            </div>
+          </div>
+
+          <!-- Success Message -->
+          <div class="form-step" id="step-success">
+            <div class="success-message">
+              <div class="success-icon">
+                <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
+                  <path
+                    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                  />
+                </svg>
+              </div>
+              <div class="success-title">
+                Application Submitted Successfully!
+              </div>
+              <div class="success-subtitle">
+                Your application has been received and is being processed.
+              </div>
+              <div class="reference-number" id="reference-display"></div>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="navigation" id="navigation">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              id="back-btn"
+              onclick="previousStep()"
+              disabled
+            >
+              <svg
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+              </svg>
+              Back
+            </button>
+
+            <button type="button" class="btn btn-ghost" onclick="saveDraft()">
+              Save Draft
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="next-btn"
+              onclick="nextStep()"
+            >
+              Next
+              <svg
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+              </svg>
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-success"
+              id="submit-btn"
+              onclick="submitApplication()"
+              style="display: none"
+            >
+              Submit Application
+              <svg
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                />
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- <script>
+      // Global variables
+      let currentStep = 1;
+      let completedSteps = [];
+      const totalSteps = 4;
+
+      // Form data object
+      let formData = {
+        // Personal Details
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        dateOfBirth: "",
+        gender: "",
+        address: "",
+        city: "",
+        state: "",
+        zipCode: "",
+
+        // Academic History
+        highSchoolName: "",
+        graduationYear: "",
+        gpa: "",
+        satScore: "",
+        actScore: "",
+        previousCollege: "",
+        intendedMajor: "",
+
+        // Guardian Information
+        guardianFirstName: "",
+        guardianLastName: "",
+        relationship: "",
+        guardianPhone: "",
+        guardianEmail: "",
+        guardianAddress: "",
+        emergencyContact: "",
+        emergencyPhone: "",
+      };
+
+      // Step titles
+      const stepTitles = [
+        "Personal Details",
+        "Academic History",
+        "Guardian Information",
+        "Review & Submit",
+      ];
+
+      // Initialize the form
+      document.addEventListener("DOMContentLoaded", function () {
+        populateGraduationYears();
+        loadSavedData();
+        setupAutoSave();
+        setupInputListeners();
+        updateUI();
+      });
+
+      // Populate graduation years dropdown
+      function populateGraduationYears() {
+        const select = document.getElementById("graduationYear");
+        const currentYear = new Date().getFullYear();
+
+        for (let i = -5; i < 5; i++) {
+          const year = currentYear + i;
+          const option = document.createElement("option");
+          option.value = year;
+          option.textContent = year;
+          select.appendChild(option);
+        }
+      }
+
+      // Load saved data from localStorage
+      function loadSavedData() {
+        const savedData = localStorage.getItem("admissionFormData");
+        const savedStep = localStorage.getItem("admissionCurrentStep");
+        const savedCompletedSteps = localStorage.getItem(
+          "admissionCompletedSteps"
+        );
+
+        if (savedData) {
+          formData = { ...formData, ...JSON.parse(savedData) };
+          populateFormFields();
+        }
+
+        if (savedStep) {
+          currentStep = parseInt(savedStep);
+        }
+
+        if (savedCompletedSteps) {
+          completedSteps = JSON.parse(savedCompletedSteps);
+        }
+      }
+
+      // Populate form fields with saved data
+      function populateFormFields() {
+        Object.keys(formData).forEach((key) => {
+          const element = document.getElementById(key);
+          if (element && formData[key]) {
+            element.value = formData[key];
+          }
+        });
+      }
+
+      // Setup auto-save functionality
+      function setupAutoSave() {
+        setInterval(() => {
+          saveToLocalStorage();
+        }, 30000); // Auto-save every 30 seconds
+      }
+
+      // Setup input event listeners
+      function setupInputListeners() {
+        const inputs = document.querySelectorAll(".form-input, .form-select");
+        inputs.forEach((input) => {
+          input.addEventListener("input", function () {
+            formData[this.name] = this.value;
+            clearError(this.name);
+          });
+        });
+      }
+
+      // Save data to localStorage
+      function saveToLocalStorage() {
+        localStorage.setItem("admissionFormData", JSON.stringify(formData));
+        localStorage.setItem("admissionCurrentStep", currentStep.toString());
+        localStorage.setItem(
+          "admissionCompletedSteps",
+          JSON.stringify(completedSteps)
+        );
+      }
+
+      // Manual save draft
+      function saveDraft() {
+        saveToLocalStorage();
+        alert("Draft saved successfully!");
+      }
+
+      // Validation functions
+      // function validateEmail(email) {
+      //   const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      //   return emailRegex.test(email);
+      // }
+
+      function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+        return emailRegex.test(email);
+      }
+
+      //   function validatePhone(phone) {
+      //     const phoneRegex = /^\\(?\\d{3}\\)?[-\.\\s]?\\d{3}[-\.\\s]?\\d{4}$/;
+      //     return phoneRegex.test(phone);
+      //   }
+
+      function validatePhone(phone) {
+        const phoneRegex =
+          /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{3,4}[-.\s]?\d{4}$/;
+        return phoneRegex.test(phone);
+      }
+
+      // Clear error message
+      function clearError(fieldName) {
+        const errorElement = document.getElementById(fieldName + "-error");
+        const inputElement = document.getElementById(fieldName);
+
+        if (errorElement) {
+          errorElement.textContent = "";
+        }
+
+        if (inputElement) {
+          inputElement.classList.remove("error");
+        }
+      }
+
+      // Show error message
+      function showError(fieldName, message) {
+        const errorElement = document.getElementById(fieldName + "-error");
+        const inputElement = document.getElementById(fieldName);
+
+        if (errorElement) {
+          errorElement.textContent = message;
+        }
+
+        if (inputElement) {
+          inputElement.classList.add("error");
+        }
+      }
+
+      // Validate current step
+      function validateStep(step) {
+        let isValid = true;
+
+        // Clear all previous errors
+        const errorElements = document.querySelectorAll(".error-message");
+        errorElements.forEach((el) => (el.textContent = ""));
+
+        const inputElements = document.querySelectorAll(
+          ".form-input, .form-select"
+        );
+        inputElements.forEach((el) => el.classList.remove("error"));
+
+        switch (step) {
+          case 1: // Personal Details
+            if (!formData.firstName.trim()) {
+              showError("firstName", "First name is required");
+              isValid = false;
+            }
+            if (!formData.lastName.trim()) {
+              showError("lastName", "Last name is required");
+              isValid = false;
+            }
+            if (!formData.email.trim()) {
+              showError("email", "Email is required");
+              isValid = false;
+            } else if (!validateEmail(formData.email)) {
+              showError("email", "Please enter a valid email address");
+              isValid = false;
+            }
+            if (!formData.phone.trim()) {
+              showError("phone", "Phone number is required");
+              isValid = false;
+            } else if (!validatePhone(formData.phone)) {
+              showError("phone", "Please enter a valid phone number");
+              isValid = false;
+            }
+            if (!formData.dateOfBirth) {
+              showError("dateOfBirth", "Date of birth is required");
+              isValid = false;
+            }
+            if (!formData.gender) {
+              showError("gender", "Gender is required");
+              isValid = false;
+            }
+            if (!formData.address.trim()) {
+              showError("address", "Address is required");
+              isValid = false;
+            }
+            if (!formData.city.trim()) {
+              showError("city", "City is required");
+              isValid = false;
+            }
+            if (!formData.state.trim()) {
+              showError("state", "State is required");
+              isValid = false;
+            }
+            if (!formData.zipCode.trim()) {
+              showError("zipCode", "ZIP code is required");
+              isValid = false;
+            }
+            break;
+
+          case 2: // Academic History
+            if (!formData.highSchoolName.trim()) {
+              showError("highSchoolName", "High school name is required");
+              isValid = false;
+            }
+            if (!formData.graduationYear) {
+              showError("graduationYear", "Graduation year is required");
+              isValid = false;
+            }
+            if (!formData.gpa) {
+              showError("gpa", "GPA is required");
+              isValid = false;
+            } else if (
+              isNaN(formData.gpa) ||
+              formData.gpa < 0 ||
+              formData.gpa > 4
+            ) {
+              showError("gpa", "GPA must be between 0.0 and 4.0");
+              isValid = false;
+            }
+            if (!formData.intendedMajor.trim()) {
+              showError("intendedMajor", "Intended major is required");
+              isValid = false;
+            }
+            break;
+
+          case 3: // Guardian Information
+            if (!formData.guardianFirstName.trim()) {
+              showError("guardianFirstName", "Guardian first name is required");
+              isValid = false;
+            }
+            if (!formData.guardianLastName.trim()) {
+              showError("guardianLastName", "Guardian last name is required");
+              isValid = false;
+            }
+            if (!formData.relationship.trim()) {
+              showError("relationship", "Relationship is required");
+              isValid = false;
+            }
+            if (!formData.guardianPhone.trim()) {
+              showError("guardianPhone", "Guardian phone is required");
+              isValid = false;
+            } else if (!validatePhone(formData.guardianPhone)) {
+              showError("guardianPhone", "Please enter a valid phone number");
+              isValid = false;
+            }
+            if (!formData.guardianEmail.trim()) {
+              showError("guardianEmail", "Guardian email is required");
+              isValid = false;
+            } else if (!validateEmail(formData.guardianEmail)) {
+              showError("guardianEmail", "Please enter a valid email address");
+              isValid = false;
+            }
+            if (!formData.emergencyContact.trim()) {
+              showError("emergencyContact", "Emergency contact is required");
+              isValid = false;
+            }
+            if (!formData.emergencyPhone.trim()) {
+              showError("emergencyPhone", "Emergency phone is required");
+              isValid = false;
+            } else if (!validatePhone(formData.emergencyPhone)) {
+              showError("emergencyPhone", "Please enter a valid phone number");
+              isValid = false;
+            }
+            break;
+        }
+
+        return isValid;
+      }
+
+      // Update form data from inputs
+      function updateFormData() {
+        const inputs = document.querySelectorAll(".form-input, .form-select");
+        inputs.forEach((input) => {
+          if (input.name && formData.hasOwnProperty(input.name)) {
+            formData[input.name] = input.value;
+          }
+        });
+      }
+
+      // Go to specific step
+      function goToStep(step) {
+        if (step >= 1 && step <= totalSteps) {
+          currentStep = step;
+          updateUI();
+          saveToLocalStorage();
+        }
+      }
+
+      // Next step
+      function nextStep() {
+        updateFormData();
+
+        if (validateStep(currentStep)) {
+          if (!completedSteps.includes(currentStep)) {
+            completedSteps.push(currentStep);
+          }
+
+          if (currentStep < totalSteps) {
+            currentStep++;
+            if (currentStep === 4) {
+              populateReviewData();
+            }
+            updateUI();
+            saveToLocalStorage();
+          }
+        }
+      }
+
+      // Previous step
+      function previousStep() {
+        if (currentStep > 1) {
+          currentStep--;
+          updateUI();
+          saveToLocalStorage();
+        }
+      }
+
+      // Populate review data
+      function populateReviewData() {
+        // Personal Details
+        const personalReview = document.getElementById("personal-review");
+        personalReview.innerHTML = `
+                <div class="review-item"><span class="review-label">Name:</span> \${formData.firstName} \${formData.lastName}</div>
+                <div class="review-item"><span class="review-label">Email:</span> \${formData.email}</div>
+                <div class="review-item"><span class="review-label">Phone:</span> \${formData.phone}</div>
+                <div class="review-item"><span class="review-label">DOB:</span> \${formData.dateOfBirth}</div>
+                <div class="review-item"><span class="review-label">Gender:</span> \${formData.gender}</div>
+                <div class="review-item"><span class="review-label">Address:</span> \${formData.address}, \${formData.city}, \${formData.state} \${formData.zipCode}</div>
+            `;
+
+        // Academic Details
+        const academicReview = document.getElementById("academic-review");
+        let academicHTML = `
+                <div class="review-item"><span class="review-label">High School:</span> \${formData.highSchoolName}</div>
+                <div class="review-item"><span class="review-label">Graduation Year:</span> \${formData.graduationYear}</div>
+                <div class="review-item"><span class="review-label">GPA:</span> \${formData.gpa}</div>
+                <div class="review-item"><span class="review-label">Intended Major:</span> \${formData.intendedMajor}</div>
+            `;
+
+        if (formData.satScore) {
+          academicHTML += `<div class="review-item"><span class="review-label">SAT Score:</span> ${formData.satScore}</div>`;
+        }
+        if (formData.actScore) {
+          academicHTML += `<div class="review-item"><span class="review-label">ACT Score:</span> ${formData.actScore}</div>`;
+        }
+        if (formData.previousCollege) {
+          academicHTML += `<div class="review-item"><span class="review-label">Previous College:</span> ${formData.previousCollege}</div>`;
+        }
+
+        academicReview.innerHTML = academicHTML;
+
+        //Guardian Details
+        const guardianReview = document.getElementById("guardian-review");
+        guardianReview.innerHTML = `
+                <div class="review-item"><span class="review-label">Guardian:</span> ${formData.guardianFirstName} \${formData.guardianLastName}</div>
+                <div class="review-item"><span class="review-label">Relationship:</span> ${formData.relationship}</div>
+                <div class="review-item"><span class="review-label">Guardian Phone:</span> ${formData.guardianPhone}</div>
+                <div class="review-item"><span class="review-label">Guardian Email:</span> ${formData.guardianEmail}</div>
+                <div class="review-item"><span class="review-label">Emergency Contact:</span> ${formData.emergencyContact}</div>
+                <div class="review-item"><span class="review-label">Emergency Phone:</span> ${formData.emergencyPhone}</div>
+            `;
+      }
+
+      // Update UI based on current step
+      function updateUI() {
+        // Hide all steps
+        const steps = document.querySelectorAll(".form-step");
+        steps.forEach((step) => step.classList.remove("active"));
+
+        // Show current step
+        document.getElementById(`step-${currentStep}`).classList.add("active");
+
+        // Update progress circles and lines
+        for (let i = 1; i <= totalSteps; i++) {
+          const circle = document.getElementById(`step-circle-${i}`);
+          const title = circle.nextElementSibling;
+          const line = document.getElementById(`progress-line-${i}`);
+
+          // Reset classes
+          circle.classList.remove("active", "completed");
+          title.classList.remove("active", "completed");
+
+          if (completedSteps.includes(i)) {
+            circle.classList.add("completed");
+            circle.innerHTML =
+              '<svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>';
+            title.classList.add("completed");
+
+            if (line) {
+              line.classList.add("completed");
+            }
+          } else if (i === currentStep) {
+            circle.classList.add("active");
+            circle.textContent = i;
+            title.classList.add("active");
+          } else {
+            circle.textContent = i;
+          }
+        }
+
+        // Update mobile step title
+        document.getElementById(
+          "mobile-step-text"
+        ).textContent = `Step ${currentStep}: ${stepTitles[currentStep - 1]}`;
+
+        // Update navigation buttons
+        const backBtn = document.getElementById("back-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const submitBtn = document.getElementById("submit-btn");
+
+        backBtn.disabled = currentStep === 1;
+
+        if (currentStep === totalSteps) {
+          nextBtn.style.display = "none";
+          submitBtn.style.display = "flex";
+        } else {
+          nextBtn.style.display = "flex";
+          submitBtn.style.display = "none";
+        }
+      }
+
+      // Submit application
+      function submitApplication() {
+        updateFormData();
+
+        if (validateStep(currentStep)) {
+          // Generate application reference
+          const applicationRef = "APP" + Date.now().toString().slice(-8);
+
+          // Save submission data
+          const submissionData = {
+            ...formData,
+            applicationRef,
+            submittedAt: new Date().toISOString(),
+          };
+
+          localStorage.setItem(
+            "admissionSubmission",
+            JSON.stringify(submissionData)
+          );
+
+          // Clear form data
+          localStorage.removeItem("admissionFormData");
+          localStorage.removeItem("admissionCurrentStep");
+          localStorage.removeItem("admissionCompletedSteps");
+
+          // Show success message
+          document.getElementById("reference-display").textContent =
+            applicationRef;
+          document.getElementById("step-success").classList.add("active");
+          document.getElementById("step-4").classList.remove("active");
+          document.getElementById("navigation").style.display = "none";
+        }
+      }
+    </script> -->
+
+    <script src="script.js"></script>
+  </body>
+</html>
